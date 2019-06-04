@@ -19,6 +19,8 @@ export class TaskItem extends Component {
     this.save = this.save.bind(this);
     this.stopEditing = this.stopEditing.bind(this);
     this.toggleStatus = this.toggleStatus.bind(this);
+    //this.startTimer = this.startTimer.bind(this);
+    //this.toggleTimer = this.toggleTimer.bind(this);
   }
 
   edit() {
@@ -38,7 +40,7 @@ export class TaskItem extends Component {
     this.props.removeTask(this.props.task);
   }
 
-  save(event) {
+  save(event){ 
     if (this.state.editing) {
       const { task } = this.props;
       const title = event.target.value.trim();
@@ -121,6 +123,11 @@ export class TaskItem extends Component {
             onClick={this.remove}>
             <Icon name="delete" />
           </Button>
+          <Button
+            className={classNames('btn--icon', 'task-item__button', {'hide': editing})}
+            onClick={this.remove}>
+            <Icon name="timer" />
+          </Button>
         </div>
       </div>
     );
@@ -130,7 +137,8 @@ export class TaskItem extends Component {
 TaskItem.propTypes = {
   removeTask: PropTypes.func.isRequired,
   task: PropTypes.object.isRequired,
-  updateTask: PropTypes.func.isRequired
+  updateTask: PropTypes.func.isRequired,
+  startTimer:PropTypes.func
 };
 
 
