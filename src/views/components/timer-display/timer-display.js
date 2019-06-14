@@ -134,9 +134,6 @@ export class TaskItem extends Component {
             <Icon name="timer" />
           </Button>
         </div>
-        <div className="cell">
-           1:09
-        </div>
       </div>
     );
   }
