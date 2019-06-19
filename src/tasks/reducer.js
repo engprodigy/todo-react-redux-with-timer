@@ -13,7 +13,8 @@ export const TasksState = new Record({
   deleted: null,
   filter: '',
   list: new List(),
-  previous: null
+  previous: ''
+  
 });
 
 

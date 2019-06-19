@@ -75,6 +75,14 @@ export class TaskItem extends Component {
     );
   }
 
+  renderTime(task) {
+    return (
+      <div>
+        {task.totalTimeOpened}
+        </div>
+    );
+  }
+
   renderTitleInput(task) {
     return (
       <input
@@ -109,8 +117,9 @@ export class TaskItem extends Component {
         </div>
 
         <div className="cell">
-          {editing ? this.renderTitleInput(task) : this.renderTitle(task)}
+        {editing ? this.renderTitleInput(task) : this.renderTitle(task)}
         </div>
+        
 
         <div className="cell">
           <Button
@@ -134,9 +143,9 @@ export class TaskItem extends Component {
             <Icon name="timer" />
           </Button>
         </div>
-        <div className="cell">
-           1:09
-        </div>
+          <div className="cell">
+              {this.renderTime(task)}
+          </div>
       </div>
     );
   }
