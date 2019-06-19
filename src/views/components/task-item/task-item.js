@@ -145,6 +145,7 @@ export class TaskItem extends Component {
         </div>
           <div className="cell">
               {this.renderTime(task)}
+              Secs
           </div>
       </div>
     );
