@@ -5,8 +5,16 @@ import {
   REMOVE_TASK_SUCCESS,
   FILTER_TASKS,
   LOAD_TASKS_SUCCESS,
-  UPDATE_TASK_SUCCESS
+  UPDATE_TASK_SUCCESS,
+  START_TIMER_SUCCESS
 } from './action-types';
+
+/*const Task = new Record({
+  completed: false,
+  key: null,
+  title: null,
+  totalTimeOpened: 0
+});*/
 
 
 export const TasksState = new Record({
@@ -49,6 +57,19 @@ export function tasksReducer(state = new TasksState(), {payload, type}) {
         list: state.list.map(task => {
           return task.key === payload.key ? payload : task;
         })
+      });
+
+    case START_TIMER_SUCCESS:
+     
+      return state.merge({
+        deleted: null,
+        previous: null,
+        list: state.list.map(task => {
+          return task.key === payload.key ? payload : task;
+        })
+        /*deleted: payload,
+        previous: state.list,
+        list: state.list.filter(task => task.key !== payload.key)*/
       });
 
     case SIGN_OUT_SUCCESS:

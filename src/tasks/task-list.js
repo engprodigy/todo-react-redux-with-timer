@@ -8,4 +8,5 @@ export const taskList = new FirebaseList({
   onChange: taskActions.updateTaskSuccess,
   onLoad: taskActions.loadTasksSuccess,
   onRemove: taskActions.removeTaskSuccess
+ // onRemove: taskActions.createStartTimerSuccess
 }, Task);

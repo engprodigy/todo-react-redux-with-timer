@@ -19,7 +19,7 @@ export class TaskItem extends Component {
     this.save = this.save.bind(this);
     this.stopEditing = this.stopEditing.bind(this);
     this.toggleStatus = this.toggleStatus.bind(this);
-    //this.startTimer = this.startTimer.bind(this);
+    this.timerStart = this.timerStart.bind(this);
     //this.toggleTimer = this.toggleTimer.bind(this);
   }
 
@@ -60,11 +60,16 @@ export class TaskItem extends Component {
 
   toggleStatus() {
     const { task } = this.props;
+    console.log(task);
     this.props.updateTask(task, {completed: !task.completed});
   }
 
-  startTimer(){
-    this.props.startTimer();
+  timerStart(){
+    
+    const { task } = this.props;
+    console.log(task);
+    this.props.startTimer(task, { totalTimeOpened: 1});
+   // this.props.startTimer(task);
   }
 
   renderTitle(task) {
@@ -77,7 +82,7 @@ export class TaskItem extends Component {
 
   renderTime(task) {
     return (
-      <div>
+      <div className="task-item__time">
         {task.totalTimeOpened}
         </div>
     );
@@ -139,13 +144,13 @@ export class TaskItem extends Component {
           </Button>
           <Button
             className={classNames('btn--icon', 'task-item__button', {'hide': editing})}
-            onClick={this.remove}>
+            onClick={this.timerStart}>
             <Icon name="timer" />
           </Button>
         </div>
           <div className="cell">
               {this.renderTime(task)}
-              Secs
+              secs
           </div>
       </div>
     );
@@ -157,6 +162,7 @@ TaskItem.propTypes = {
   task: PropTypes.object.isRequired,
   updateTask: PropTypes.func.isRequired,
   startTimer:PropTypes.func
+  
 };
 
 

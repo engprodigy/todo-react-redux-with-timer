@@ -17,7 +17,7 @@ import {
 
 export function createTask(title) {
   return dispatch => {
-    taskList.push({completed: false, title})
+    taskList.push({completed: false, title, totalTimeOpened: 0})
       .catch(error => dispatch(createTaskError(error)));
   };
 }
@@ -95,11 +95,22 @@ export function updateTaskSuccess(task) {
   };
 }
 
-export function loadTasksSuccess(tasks) {
+export function loadTasksSuccess(task ) {
   return {
     type: LOAD_TASKS_SUCCESS,
-    payload: tasks
+    payload: task
   };
+}
+
+export function createStartTimerSuccess(task, changes) {
+  return dispatch => {
+    taskList.update(task.key, changes)
+      .catch(error => dispatch(updateTaskError(error)));
+  };
+  /*return {
+    type: START_TIMER_SUCCESS,
+    payload: task
+  };*/
 }
 
 export function filterTasks(filterType) {
