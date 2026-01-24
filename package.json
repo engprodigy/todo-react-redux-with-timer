@@ -48,7 +48,7 @@
   "devDependencies": {
     "cross-env": "^5.0.1",
     "enzyme": "^2.9.1",
-    "firebase-tools": "^3.9.1",
+    "firebase-tools": "^15.4.0",
     "minx": "r-park/minx.git",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
